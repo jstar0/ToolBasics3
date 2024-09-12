@@ -1,0 +1,225 @@
+\chapter{Python基础语法}
+\label{cp:pythonbasics}
+
+\section{Python极简介绍}
+
+Python是一门\textbf{通用型高级编程语言}，其设计哲学强调代码的\textit{可读性和简洁性}，使用\textit{缩进}来划分代码块。\textit{支持多种编程范式}，包括面向对象、命令式和函数式编程。拥有\textit{动态类型系统}和\textit{垃圾回收}功能，能够轻松实现复杂的任务。\textit{Python的标准库和第三方库生态系统非常丰富},使其成为科学计算、人工智能、Web开发等领域的热门语言选择。\textit{简单易学而功能强大的特性},使Python成为编程初学者和专业开发者的共同选择。
+
+\section{Python基础语法}
+
+有鉴于我们经过一学年的修习，对C/C++的用法已经有了一定的了解，因此我们在这里不再从头开始讲解Python的基础语法，而是通过建立表格进行比较，以期更好地理解Python的语法特性。\\
+
+具体的对比请见\autoref{tab:pythonvscpp}所示。
+
+\begin{longtable}{|p{1.7cm}|p{3.8cm}|p{3.8cm}|p{4cm}|}
+    \hline
+    \textbf{概念/语法} & \textbf{C/C++} & \textbf{Python} & \textbf{说明} \\
+    \hline
+    \textbf{变量声明} & \texttt{int x = 10;} & \texttt{x = 10} & Python不需要显式声明类型，解释器根据值类型推断。 \\
+    \hline
+    \textbf{注释} & \texttt{// 单行注释 \newline /* 多行注释 */} & \texttt{\# 单行注释 \newline """多行注释"""} & C/C++使用\texttt{//}和\texttt{/* */}，Python用\texttt{\#}或\texttt{""" """}进行注释。 \\
+    \hline
+    \textbf{打印输出} & \texttt{printf("Hello, World!\textbackslash n");} & \texttt{print("Hello, World!")} & C/C++使用\texttt{printf}，Python用\texttt{print}。 \\
+    \hline
+    \textbf{条件语句} & \texttt{if (x > 10) \{ ... \} else \{ ... \}} & \texttt{if x > 10: ... else: ...} & Python用缩进代替大括号，且不需要括号包裹条件表达式。 \\
+    \hline
+    \textbf{循环语句} & \texttt{for (int i = 0; i < 10; i++) \{ ... \} \newline while (x) \{ \}} & \texttt{for i in range(10): ... \newline while x:} & Python的\texttt{for}循环直接使用\texttt{range()}函数，语法更加简洁。 \\
+    \hline
+    \textbf{函数定义} & \texttt{int add(int a, int b) \{ return a + b; \}} & \texttt{def add(a, b): return a + b} & Python使用\texttt{def}定义函数，且无需声明返回类型。 \\
+    \hline
+    \textbf{数组/列表} & \texttt{int arr[5] = \{1, 2, 3, 4, 5\};} & \texttt{arr = [1, 2, 3, 4, 5]} & Python使用列表（\texttt{list}），可以动态调整大小，C/C++数组大小固定。 \\
+    \hline
+    \textbf{指针/引用} & \texttt{int* ptr = \&x; \newline int\& ref = x;} & 不适用 & Python不支持指针，变量为引用类型，简化了内存管理。 \\
+    \hline
+    \textbf{内存管理} & \texttt{malloc/free} 或 \texttt{new/delete} & 由解释器自动管理内存 & Python有垃圾回收机制，C/C++需手动管理内存。 \\
+    \hline
+    \textbf{结构体/类} & \texttt{struct Point \{ int x; int y; \}; \newline class} & \texttt{class Point: \newline def \_\_init\_\_(self, x, y): ...} & C使用\texttt{struct}，C++用\texttt{class}，Python类定义简单，使用\texttt{self}指代实例。 \\
+    \hline
+    \textbf{模块导入} & \texttt{\#include <stdio.h>} & \texttt{import math} & C/C++通过\texttt{\#include}导入头文件，Python使用\texttt{import}导入模块。 \\
+    \hline
+    \textbf{异常处理} & 不适用（C）；\texttt{try/catch（C++）} & \texttt{try: ... except: ...} & C++与Python都有异常处理机制，但Python语法更简单。 \\
+    \hline
+    \textbf{字符串处理} & \texttt{char str[] = "Hello"; \newline std::string str = "Hello";} & \texttt{str = "Hello"} & C字符串是字符数组，C++使用\texttt{std::string}，Python直接使用字符串。 \\
+    \hline
+    \textbf{类型转换} & \texttt{(int)x} 或 \texttt{static\_cast<int>(x)} & \texttt{int(x)} & C/C++需要强制类型转换，Python用函数进行转换。 \\
+    \hline
+    \textbf{文件操作} & \texttt{FILE *fp = fopen("file.txt", "r"); ... fclose(fp);} & \texttt{with open("file.txt", "r") as f: ...} & Python使用\texttt{with}管理文件，自动处理关闭操作，C需要手动关闭文件。 \\
+    \hline
+    \textbf{命令行参数} & \texttt{int main(int argc, char* argv[])} & \texttt{import sys; sys.argv} & C通过\texttt{argc}和\texttt{argv[]}获取参数，Python通过\texttt{sys.argv}获取命令行参数。 \\
+    \hline
+    \textbf{库支持} & 需要手动链接库 & 内置大量标准库，且通过\texttt{pip}可安装第三方库 & Python库管理简化，无需手动链接，且有丰富的第三方库。 \\
+    \hline
+
+    \caption{Python与C/C++基础语法对比}
+    \label{tab:pythonvscpp}
+\end{longtable}
+
+\section{Python语法示例}
+
+\subsection{最佳实践}
+
+我们按照\textit{PEP 8风格指南}，合理处理空格和缩进；建立\textit{入口点检查}，即在\texttt{if \_\_name\_\_ == "\_\_main\_\_"}才执行主函数；使用\textit{函数式编程}，避免全局变量；添加\textit{文档字符串}，方便代码阅读和维护；在\texttt{get\_user\_input}函数中，使用\texttt{try/except}处理异常；\textit{变量命名}上，使用\texttt{snake\_case}风格。完整代码如\autoref{listing:pythonbest}所示。\\
+
+\begin{longlisting}
+    \begin{minted}{python}
+#!/usr/bin/env python3
+"""
+Python 单文件的最佳实践示例
+
+功能：
+1. 读取用户输入的数字
+2. 计算并输出数字的平方
+"""
+
+def get_user_input(prompt):
+    """
+    获取用户输入并将其转换为浮点数
+
+    参数：
+    prompt (str): 提示用户输入的消息
+
+    返回：
+    float: 用户输入的数字
+    """
+    while True:
+        try:
+            user_input = input(prompt)
+            return float(user_input)
+        except ValueError:
+            print("输入无效，请输入一个有效的数字。")
+
+
+def calculate_square(number):
+    """
+    计算给定数字的平方
+
+    参数：
+    number (float): 要计算平方的数字
+
+    返回：
+    float: 输入数字的平方
+    """
+    return number ** 2
+
+
+def main():
+    """
+    主函数，执行脚本的主要功能
+    """
+    print("欢迎使用数字平方计算器！")
+    number = get_user_input("请输入一个数字： ")
+    squared_value = calculate_square(number)
+    print(f"{number} 的平方是 {squared_value}")
+
+
+if __name__ == "__main__":
+    main()
+
+    \end{minted}
+    \caption{Python最佳实践}
+    \label{listing:pythonbest}
+\end{longlisting}
+
+\subsection{多文件、进程和线程}
+
+\subsubsection{Python的多文件结构}
+
+我们都清楚，\textbf{在大型项目中，代码往往会被分成许多个文件}。而Python的设定就是，\textit{每个文件都可以作为模块导入}，通过\texttt{import}语句实现。\\
+
+下面给出一个实例，假使我们有 \texttt{math\_tool.py} 和 \texttt{main.py} 两个文件：
+
+\begin{longlisting}
+    \begin{minted}{python}
+# math_tool.py
+def add(a, b):
+    return a + b
+
+def subtract(a, b):
+    return a - b
+
+# main.py
+import math_tool
+
+def main():
+    x, y = 10, 5
+    print(f"{x} + {y} = {math_tool.add(x, y)}")
+    print(f"{x} - {y} = {math_tool.subtract(x, y)}")
+
+if __name__ == "__main__":
+    main()
+    \end{minted}
+    \caption{Python多文件结构示例}
+    \label{listing:pythonmulti}
+\end{longlisting}
+
+在 \texttt{main.py} 中，我们通过 \texttt{import math\_tool} 导入了 \texttt{math\_tool.py} 文件，然后就可以使用其中的函数了。
+
+\subsubsection{Python的进程}
+
+对于\textbf{CPU密集型任务}，\textbf{使用多进程}，就可以\textit{通过在操作系统中启动多个进程来实现并发执行}。\textit{每个进程拥有独立的内存空间}。Python提供了\texttt{multiprocessing}模块来支持多进程编程。
+
+我们给出一个示例，启动\texttt{5}个进程，每个进程执行\texttt{worker}函数，独立地并行处理任务。
+
+\begin{longlisting}
+    \begin{minted}{python}
+from multiprocessing import Process
+
+def worker(number):
+    """模拟一些任务"""
+    print(f"Worker {number} is working")
+
+if __name__ == "__main__":
+    processes = []
+    for i in range(5):
+        p = Process(target=worker, args=(i,))
+        processes.append(p)
+        p.start()
+
+    for p in processes:
+        p.join()  # 等待所有进程完成
+
+    print("Workers all done")
+    \end{minted}
+    \caption{Python多进程示例}
+    \label{listing:pythonprocess}
+\end{longlisting}
+
+\subsubsection{Python的线程}
+
+类似于进程，对于\textbf{I/O密集型任务}，\textbf{使用多线程}，可以\textit{通过在同一进程中启动多个线程来实现并发执行}。\textit{线程共享同一进程的内存空间}。Python提供了\texttt{threading}模块来支持多线程编程。
+
+\begin{longlisting}
+    \begin{minted}{python}
+import threading
+import time
+
+def worker(number):
+    """模拟一些任务"""
+    print(f"Worker {number} is starting")
+    time.sleep(2)
+    print(f"Worker {number} is done")
+
+if __name__ == "__main__":
+    threads = []
+    for i in range(5):
+        t = threading.Thread(target=worker, args=(i,))
+        threads.append(t)
+        t.start()
+
+    for t in threads:
+        t.join()  # 等待所有线程完成
+
+    print("Workers all done")
+
+    \end{minted}
+    \caption{Python多线程示例}
+    \label{listing:pythonthread}
+\end{longlisting}
+
+\subsubsection{脚注}
+
+有必要具体展开讨论\textbf{CPU密集型任务和I/O密集型任务}为何分别推荐使用多进程和多线程。我们说：\\
+
+使用\textbf{进程}，则\textit{每个进程都有独立的内存空间}，进程间通信成本高，因此更适合 CPU 密集型任务。使用\textbf{线程}，则\textit{线程共享内存空间}，开销较低，但容易出现竞争条件，因此适合 I/O 密集型任务。\\
+
+实际上，我们还可以通过\texttt{concurrent.futures}模块来更方便地实现线程池和进程池。或是仅仅建立一个数组或列表，作为一个简易的线程池或进程池，然后通过\texttt{join()}方法等待所有线程或进程完成。

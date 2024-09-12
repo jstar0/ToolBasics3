@@ -1,16 +1,14 @@
 \thispagestyle{plain} % Page style without header and footer
-\pdfbookmark[1]{摘要}{摘要} % Add entry to PDF
-\chapter*{摘要} % Chapter* to appear without numeration
-\blindtext
+\pdfbookmark[1]{概述}{概述} % Add entry to PDF
+\chapter*{概述} % Chapter* to appear without numeration
+\label{cp:abstract}
 
-\keywordscn{Keyword A, Keyword B, Keyword C.}
+本实验报告使用由\textbf{于景一}制作的\LaTeX{}模板完成。关于此模板的信息，您可以前往\href{https://github.com/jstar0/LaTeXTemplate/}{GitHub模板仓库}具体了解。\footnote{或您可直接搜索GitHub账号\textit{@jstar0}了解更多}\footnote{您请注意，本模板基于LPPL v1.3c分发，本项目在原模板\href{https://github.com/joseareia/ipleiria-thesis}{Polytechnic University of Leiria: LaTeX Thesis Template}的基础上进行了合法地大量二改，包括但不限于自定义风格、中文化支持、样式重定义、功能增加等。}本文章使用的是“实验报告”模板。\footnote{模板提供两种样式，一种为学术论文样式，另一种为实验报告样式，具体区别请检查GitHub仓库上的两个分支。}\\
 
-%\blankpage
+本实验报告是\textit{系统开发工具基础课程}的第三次实验报告，主要关于\textbf{Shell环境（进程管理）与Python的语言基础、在计算机视觉方面的应用}，总结实战经验，记录心得体会。 \\
 
-\pdfbookmark[1]{Abstract}{abstract} % Add entry to PDF
-\chapter*{Abstract} % Chapter* to appear without numeration
-\blindtext
+对于\textbf{Shell的进程管理}方面，由于我早先有过使用\texttt{screen}的经验，所以对此部分内容并不陌生。在本次实验中，我们将深刻理解\textbf{Shell中的任务控制的机理}，了解\textit{信号机制的通信原理}，学会\textit{结束进程、挂起进程、后台执行进程}，并且掌握\textit{除}\texttt{screen}\textit{外的终端多路复用的方法}（即\texttt{tmux}）；由于我拥有许多云服务器，需要日常进行运维，对\textbf{远端设备的操作（SSH）}已经熟稔，在文中仅简略概括。\\
 
-\keywordsen{Keyword A, Keyword B, Keyword C.}
+至于\textbf{Python方面的基础语法与计算机视觉的应用}，由于先前我有使用多线程技术编写过一些Python小程序，并在上周的数学建模国赛中使用过许多数学计算与图形绘制的相关库，如\texttt{Matplotlib, Scipy, Numpy}等，所以对此部分内容也早有涉猎。在本次实验中，我们将首先梳理\textbf{Python的基础语法}，\textit{将它与系统学习过的C/C++进行横向对比学习}，尔后\textbf{学习Python的视觉应用}，了解\textit{图像处理的基本操作，如图像的读取、显示、保存、基本的图像处理}这些最基本的操作（参考\cite{solem2014python计算机视觉编程}），并且\textbf{额外地}\textit{尝试编写一些简单的视觉应用}，如\textit{图像的灰度化、二值化、边缘检测、图像的腐蚀与膨胀}等。\\
 
-%\blankpage
+\note{知识之海是无边无际的，只是尽力游弋，就已倍感费时费力，然而学习的过程是美好的。本次实验在Shell和Python方面的粗浅研究，仅可窥得其冰山一角。本文十分惭愧地呈现了我在实验中对两个领域的浅薄了解，如有谬误还请批评斧正。}
