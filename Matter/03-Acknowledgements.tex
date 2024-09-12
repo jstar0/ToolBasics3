@@ -1,0 +1,12 @@
+\thispagestyle{plain} % Page style without header and footer
+
+\ifthenelse{\equal{\getLanguage}{chinese}}{%
+    \pdfbookmark[1]{致谢}{致谢} % Add entry to PDF
+    \chapter*{致谢} % Chapter* to appear without numeration
+}{%
+    \pdfbookmark[1]{Acknowledgements}{acknowledgements} % Add entry to PDF
+    \chapter*{Acknowledgements} % Chapter* to appear without numeration
+}
+
+\blindtext
+%\plainblankpage

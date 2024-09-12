@@ -1,0 +1,96 @@
+\ifthenelse{\equal{\getLanguage}{chinese}}{%
+    \pdfbookmark[0]{前言}{前言} % Add entry to PDF bookmarks group
+    \pdfbookmark[1]{封面}{封面} % Add entry to PDF
+}{%
+    \pdfbookmark[0]{Front Matter}{frontmatter} % Add entry to PDF bookmarks group
+    \pdfbookmark[1]{Cover}{cover} % Add entry to PDF
+}
+
+% Add background picture
+\newcommand\BackgroundPicCover{%
+    \put(0,0){%
+    \parbox[b][\paperheight]{\paperwidth}{%
+    \vfill
+    \centering
+    \includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio]{Figures/Theme/Cover-BG.pdf}%
+    \vfill
+}}}
+\AddToShipoutPictureBG*{\BackgroundPicCover}
+
+\newgeometry{margin=1.98cm, top=2.15cm, bottom=1.47cm}
+\begin{titlepage}
+    \latofont % Switch to Lato font for the title page
+    \color{white} % Define the color to use within this page
+    \vspace*{\baselineskip} % White space at the top of the page
+
+    \begin{figure}
+        \includegraphics[width=0.32\linewidth]{Figures/Theme/OUC-Logo-W.pdf}
+    \end{figure}
+
+    \vspace{5.5\baselineskip}
+
+    % Title
+	\noindent
+    \makebox[\textwidth][l]{%
+        \parbox{\dimexpr\textwidth-2.5cm\relax}{
+            \setstretch{1.03}
+            \raggedright\bfseries\CJKfontspec{STZhongsong}\fontsize{24}{26}\selectfont\thetitle
+        }
+    }
+
+    \vspace{0.8\baselineskip}
+
+    % Subtitle
+    \noindent
+    \makebox[\textwidth][l]{%
+        \parbox{\dimexpr\textwidth-3cm\relax}{
+            \setstretch{1.03}
+            \raggedright\fontsize{14}{19}\selectfont\subname
+        }
+    }
+
+    \vspace{35pt}  
+
+    % Author
+    {\noindent\bfseries\CJKfontspec{STSong}\fontsize{14}{19}\selectfont\firstauthorname}
+
+    % Author ID
+    \vspace{8pt}
+    {\noindent\bfseries\fontsize{10}{12}\selectfont\firstauthornum}
+
+    \ifdefined\secondauthorname
+        \vspace{8pt}
+        {\noindent\bfseries\fontsize{14}{19}\selectfont\secondauthorname}
+	\fi
+
+    \ifdefined\thirdauthorname
+        \vspace{8pt}
+        {\noindent\bfseries\fontsize{14}{19}\selectfont\thirdauthorname}
+	\fi
+ 
+	\vfill
+
+    % School
+	{\noindent\CJKfontspec{STZhongsong}\fontsize{10}{12}\selectfont\schoolname}
+	
+    % Department
+	{\noindent\fontsize{10}{12}\selectfont\departmentname}
+
+    % Degree
+	{\noindent\fontsize{10}{12}\selectfont\degname}
+
+    % Course
+    \ifdefined\coursename
+        {\noindent\fontsize{10}{12}\selectfont\coursename}
+	\fi
+
+    \vspace{125pt}
+
+    % Local & Date
+    % 如果语言是中文
+    {\noindent\fontsize{10}{12}\selectfont\thedate}
+
+    \vspace{68pt}
+\end{titlepage}
+\restoregeometry
+%\blankpage
